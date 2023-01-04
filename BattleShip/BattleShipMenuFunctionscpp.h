@@ -36,10 +36,10 @@ void PrintGameName()
 void arrowHere(int realPosition, int arrowPosition) {
 	if (realPosition == arrowPosition) {
 		SetConsoleTextAttribute(console, 9);
-		cout << "\t\t\t\t\t\t\t\t\t\t ----->>  ";
+		cout << "\t\t\t\t\t\t\t\t\t\t ----->>    ";
 	}
 	else {
-		SetConsoleTextAttribute(console, 7);
+		SetConsoleTextAttribute(console, 4);
 		cout << "\t\t\t\t\t\t\t\t\t\t          ";
 	}
 }
@@ -108,20 +108,4 @@ void menu()
 	}
 	//_getch();
 }
-
-
-
-
-void PrintChoiceMenu()
-{
-	
-	SetConsoleTextAttribute(console, 13);
-	cout << "NEW GAME" << endl;
-	cout << "HOW TO PLAY" << endl;
-	cout << "EXIT" << endl;
-}
-
-
-
-
 

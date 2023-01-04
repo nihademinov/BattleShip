@@ -131,8 +131,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BattleShipMenuFunctionscpp.h" />
-    <ClInclude Include="BoardsFunctions.h" />
+    <ClInclude Include="BotBoardsFunctions.h" />
+    <ClInclude Include="choice Boat size.h" />
+    <ClInclude Include="creat boards.h" />
     <ClInclude Include="functions Choice1 and Choice2 with Menu.h" />
+    <ClInclude Include="PlayerBoards.h" />
+    <ClInclude Include="PutBoatsOnArea.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
