@@ -1,4 +1,7 @@
 #pragma once
+
+bool check_ = true;
+
 void show_Bot_Board(char** board,int size)
 {
 
@@ -15,6 +18,7 @@ void show_Bot_Board(char** board,int size)
         {
             if (board[i][j] == 'X')
             {
+                check_ = false;
                 SetConsoleTextAttribute(console, 12);
                 cout << board[i][j]<<" ";
                 SetConsoleTextAttribute(console, 7);
@@ -23,6 +27,7 @@ void show_Bot_Board(char** board,int size)
             }
             else if (board[i][j] == 'V')
             {
+                check_ = true;
                 SetConsoleTextAttribute(console, 2);
                 cout << board[i][j]<<" ";
                 SetConsoleTextAttribute(console, 7);
@@ -43,7 +48,6 @@ void show_Bot_Board(char** board,int size)
 
 
 
-
 void Hit_Span(char** area)
 {
 
@@ -52,7 +56,10 @@ void Hit_Span(char** area)
         int random = 1 + rand() % 15;
         int random_2 = 1 + rand() % 15;
         if (area[random][random_2] == ' ') {
+            SetConsoleTextAttribute(console, 2);
             area[random][random_2] = '@';
+
+
             row = random;
             columbn = random_2;
             break;
@@ -273,6 +280,7 @@ void Hit_Span_Move()
             break;
 
         case 13:
+            temp = ' ';
             check_Hit(BoardBot, FakeBoardBot);
             check = false;
             break;

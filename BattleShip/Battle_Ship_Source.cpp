@@ -28,6 +28,7 @@ char** BoardPlayer = CreatePlayerBoard(sizeBoard);
 #include "Battle sizes horizontal.h"
 #include "Battle sizes vertical.h"
 #include "Hit_Player.h"
+#include "Hit_Bot.h"
 
 
 int main() {
@@ -74,11 +75,16 @@ int main() {
 
 
 
-				while (true)
+				while (check_)
 				{
 					Hit_Span(FakeBoardBot);
 					Hit_Span_Move();
 					//check_Hit(BoardBot,FakeBoardBot);
+				}
+
+				if (!check_)
+				{
+
 				}
 				
 
