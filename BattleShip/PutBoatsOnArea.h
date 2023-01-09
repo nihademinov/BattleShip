@@ -3,7 +3,6 @@ bool  Choice_Yes = false;
 bool  Choice_No = false;
 bool  Choice_Back = false;
 
-
 void AskBotFillOrNot()
 {
 	cout << endl;

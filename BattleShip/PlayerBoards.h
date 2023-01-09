@@ -1,16 +1,5 @@
 #pragma once
 
-
-//char** CreatePlayerBoard(int size)
-//{
-//	char** areaPlayer = new char* [size];
-//	for (int i = 0; i < size; i++)
-//	{
-//		areaPlayer[i] = new char[size] {};
-//	}
-//	return areaPlayer;
-//}
-//
 void fill_PlayerBoard(char** areaPlayer, int size) {
 	for (int i = 0; i < size; i++)
 	{
@@ -24,7 +13,6 @@ void fill_PlayerBoard(char** areaPlayer, int size) {
 				areaPlayer[i][j] = ' ';
 			}
 		}
-		//cout << endl;
 	}
 }
 
@@ -57,7 +45,7 @@ bool boat_size_1 = false;
 bool boat_size_2 = false;
 bool boat_size_3 = false;
 bool boat_size_4 = false;
-bool choice_Back_ = false;
+//bool choice_Back_ = false;
 
 
 void AskToPlayer()
@@ -129,64 +117,6 @@ void AskToPlayer()
 		SetConsoleTextAttribute(console, 7);
 		choice_Back_ = true;
 		break;
-
-	}
-}
-
-//----------------------vertical or horizontal-----------------------------------------
-
-bool choice_vertical = false;
-bool choice_horizontal = false;
-void AskToPlayer_Vertical_Or_Horizontal()
-{
-	cout << endl;
-	int position = 1;
-	int keyPressed = 0;
-
-	while (keyPressed != 13)
-	{
-		system("cls");
-		SetConsoleTextAttribute(console, 11);
-		cout << "\n\n\n\n\n\n";
-		cout << "PLEASE,CHOICE VERTICAL OR HORIZONTAL" << endl;
-		arrowHere_2(1, position);
-		cout << "VERTICAL\n";
-		arrowHere_2(2, position);
-		cout << "HORIZONTAL \n";
-	
-		
-
-		keyPressed = _getch();
-
-		if (keyPressed == 80 && position != 2)
-		{
-			position++;
-		}
-		else if (keyPressed == 72 && position != 1)
-		{
-			position--;
-		}
-		else
-		{
-			position = position;
-		}
-	}
-
-	switch (position)
-	{
-	case 1:
-		system("cls");
-		SetConsoleTextAttribute(console, 7);
-		choice_vertical = true;
-		break;
-	case 2:
-		system("cls");
-		SetConsoleTextAttribute(console, 7);
-		choice_horizontal = true;
-		break;
-
-
-
 
 	}
 }

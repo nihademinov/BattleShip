@@ -130,11 +130,13 @@
     <ClCompile Include="Battle_Ship_Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Battle sizes vertical.h" />
+    <ClInclude Include="Battle sizes horizontal.h" />
     <ClInclude Include="BattleShipMenuFunctionscpp.h" />
     <ClInclude Include="BotBoardsFunctions.h" />
-    <ClInclude Include="choice Boat size.h" />
     <ClInclude Include="creat boards.h" />
     <ClInclude Include="functions Choice1 and Choice2 with Menu.h" />
+    <ClInclude Include="Hit_Player.h" />
     <ClInclude Include="PlayerBoards.h" />
     <ClInclude Include="PutBoatsOnArea.h" />
   </ItemGroup>

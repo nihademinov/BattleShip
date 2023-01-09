@@ -20,23 +20,17 @@ void ColorText(const char* text)
 	SetConsoleTextAttribute(console, 7);
 }
 
-
 void Choice_1_With_Menu()
 {
 	const char text[] = "hellooo my game. this game producted by Eminov Nihadddd";
 	
 	ColorText(text);
 
-
+	
 }
 
 void Choice_2_With_Menu()
 {
-
 	const char Exit_text[] = "THANKS A LOT)";
-
-	
 	ColorText(Exit_text);
-
 }
-

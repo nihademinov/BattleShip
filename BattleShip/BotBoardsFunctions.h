@@ -11,18 +11,6 @@ void gotoxy(short x, short y)
 	SetConsoleCursorPosition(hStdout, position);
 }
 
-
-//
-//char** CreateBotBoard(int size)
-//{
-//	char** areaPlayer = new char* [size];
-//	for (int i = 0; i < size; i++)
-//	{
-//		areaPlayer[i] = new char[size] {};
-//	}
-//	return areaPlayer;
-//}
-//
 void fill_BotBoard(char** areaPlayer, int size) {
 	for (int i = 0; i < size; i++)
 	{
@@ -78,11 +66,6 @@ void printOnlyEmpytyBotBoard(char** board, int size)
 }
 
 //----------------------BOT BOARD RANDOMLY FILL---------------------------------------------
-
-
-
-
-
 
 void fill_Random_By_Bot_4(char**BotBoard)
 {

@@ -1,6 +1,5 @@
 #pragma once
 
-
 char** CreatePlayerBoard(int size)
 {
 	char** areaPlayer = new char* [size];
@@ -11,8 +10,6 @@ char** CreatePlayerBoard(int size)
 	return areaPlayer;
 }
 
-
-
 char** CreateBotBoard(int size)
 {
 	char** areaPlayer = new char* [size];
@@ -22,4 +19,3 @@ char** CreateBotBoard(int size)
 	}
 	return areaPlayer;
 }
-

@@ -31,8 +31,6 @@ void PrintGameName()
 }
 
 
-
-
 void arrowHere(int realPosition, int arrowPosition) {
 	if (realPosition == arrowPosition) {
 		SetConsoleTextAttribute(console, 9);
@@ -44,15 +42,11 @@ void arrowHere(int realPosition, int arrowPosition) {
 	}
 }
 
-
-
-
-
-
-
 bool ChoiceNewGame = false;
 bool ChoiceHowToPlay = false;
 bool ChoiceExit = false;
+bool choice_Back_ = false;
+
 
 void menu()
 {
@@ -65,7 +59,16 @@ void menu()
 		system("cls");
 		PrintGameName();
 		arrowHere(1, position);
-		cout << "NEW GAME\n";
+		if (choice_Back_)
+		{
+			cout << "RESUME GAME\n";
+
+		}
+		else 
+		{
+			cout << "NEW GAME\n";
+		}
+		//cout << "NEW GAME\n";
 		arrowHere(2, position);
 		cout << "HOW TO PLAY \n";
 		arrowHere(3, position);
@@ -106,6 +109,4 @@ void menu()
 		break;
 	
 	}
-	//_getch();
 }
-

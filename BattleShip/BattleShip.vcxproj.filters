@@ -35,10 +35,16 @@
     <ClInclude Include="PlayerBoards.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="choice Boat size.h">
+    <ClInclude Include="creat boards.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="creat boards.h">
+    <ClInclude Include="Battle sizes horizontal.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Battle sizes vertical.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Hit_Player.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
