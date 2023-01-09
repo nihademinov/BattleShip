@@ -78,7 +78,7 @@ int main() {
 				{
 					Hit_Span(FakeBoardBot);
 					Hit_Span_Move();
-					check_Hit(BoardBot,FakeBoardBot);
+					//check_Hit(BoardBot,FakeBoardBot);
 				}
 				
 

@@ -68,57 +68,104 @@ char temp = ' ';
 
 void left_func_Hit(char** area)
 {
-    if (area[row][columbn - 1] == ' ' ) 
+    if (area[row][columbn - 1] == ' ')
     {
+        char temp2 = area[row][columbn];
         area[row][columbn] = temp;
-        temp = ' ';
+        temp = area[row][columbn - 1];
 
-        area[row][columbn - 1] = '@';
+        area[row][columbn - 1] = temp2;
         columbn--;
     }
     else if (area[row][columbn - 1] == 'X')
     {
+        char temp2 = area[row][columbn];
         area[row][columbn] = temp;
-
+        temp = area[row][columbn - 1];
+        area[row][columbn - 1] = temp2;
         temp = 'X';
-        area[row][columbn] = ' ';
-        area[row][columbn - 1] = '@';
+
         columbn--;
 
     }
     else if (area[row][columbn - 1] == 'V')
     {
+        char temp2 = area[row][columbn];
         area[row][columbn] = temp;
-
+        temp = area[row][columbn - 1];
+        area[row][columbn - 1] = temp2;
         temp = 'V';
-        area[row][columbn] = ' ';
-
-        area[row][columbn - 1] = '@';
         columbn--;
-    }
 
+    }
 }
 
 void right_func_Hit(char** area)
 {
-
-
-    if (area[row][columbn + 1] == ' ' || area[row][columbn + 1] == 'X' || area[row][columbn + 1] == 'V')
+    if (area[row][columbn + 1] == ' ')
     {
-        area[row][columbn] = ' ';
-        area[row][columbn + 1] = '@';
+        char temp2 = area[row][columbn];
+        area[row][columbn] = temp;
+        temp = area[row][columbn + 1];
+
+        area[row][columbn + 1] = temp2;
         columbn++;
     }
 
-    
+    else if(area[row][columbn + 1] == 'X')
+    {
+        char temp2 = area[row][columbn];
+        area[row][columbn] = temp;
+        temp = area[row][columbn + 1];
+        area[row][columbn + 1] = temp2;
+        temp = 'X';
+
+        columbn++;
+    }
+
+    else if (area[row][columbn + 1] == 'V')
+    {
+        char temp2 = area[row][columbn];
+        area[row][columbn] = temp;
+        temp = area[row][columbn + 1];
+        area[row][columbn + 1] = temp2;
+        temp = 'V';
+        columbn++;
+    }
 }
+
+   
+    
+
 
 void down_func_Hit(char** area)
 {
-    if (area[row + 1][columbn] == ' ' || area[row + 1][columbn] == 'X' || area[row + 1][columbn] == 'V')
+    if (area[row + 1][columbn] == ' ')
     {
-        area[row][columbn] = ' ';
-        area[row + 1][columbn] = '@';
+        char temp2 = area[row][columbn];
+        area[row][columbn] = temp;
+        temp = area[row + 1][columbn];
+
+        area[row + 1][columbn] = temp2;
+        row++;
+    }
+    else if (area[row + 1][columbn] == 'X')
+    {
+        char temp2 = area[row][columbn];
+        area[row][columbn] = temp;
+        temp = area[row + 1][columbn];
+        area[row + 1][columbn] = temp2;
+        temp = 'X';
+
+        row++;
+    }
+    else if (area[row + 1][columbn] == 'V')
+    {
+        char temp2 = area[row][columbn];
+        area[row][columbn] = temp;
+        temp = area[row + 1][columbn];
+        area[row + 1][columbn] = temp2;
+        temp = 'V';
         row++;
     }
 
@@ -128,10 +175,32 @@ void down_func_Hit(char** area)
 
 void up_func_Hit(char** area)
 {
-    if (area[row - 1][columbn] == ' ' || area[row - 1][columbn] == 'X' || area[row - 1][columbn] == 'V')
+    if (area[row - 1][columbn] == ' ' )
     {
-        area[row][columbn] = ' ';
-        area[row - 1][columbn] = '@';
+        char temp2 = area[row][columbn];
+        area[row][columbn] = temp;
+        temp = area[row - 1][columbn];
+
+        area[row - 1][columbn] = temp2;
+        row--;
+    }
+    else if (area[row - 1][columbn] == 'X')
+    {
+        char temp2 = area[row][columbn];
+        area[row][columbn] = temp;
+        temp = area[row - 1][columbn];
+        area[row - 1][columbn] = temp2;
+        temp = 'X';
+
+        row--;
+    }
+    else if (area[row - 1][columbn] == 'V')
+    {
+        char temp2 = area[row][columbn];
+        area[row][columbn] = temp;
+        temp = area[row - 1][columbn];
+        area[row - 1][columbn] = temp2;
+        temp = 'V';
         row--;
     }
 
@@ -204,7 +273,7 @@ void Hit_Span_Move()
             break;
 
         case 13:
-            //check_Hit(BoardBot);
+            check_Hit(BoardBot, FakeBoardBot);
             check = false;
             break;
         }
