@@ -13,7 +13,25 @@ void show_board(char** board, int size)
     {
         for (int j = 0; j < size; j++)
         {
-            cout << board[i][j] << " ";
+            if (board[i][j] == 'X')
+            {
+                SetConsoleTextAttribute(console, 12);
+                cout << board[i][j] << " ";
+                SetConsoleTextAttribute(console, 7);
+
+
+            }
+            else if (board[i][j] == 'V')
+            {
+                SetConsoleTextAttribute(console, 2);
+                cout << board[i][j] << " ";
+                SetConsoleTextAttribute(console, 7);
+
+            }
+            else
+            {
+                cout << board[i][j] << " ";
+            }
         }
         cout << endl;
     }
@@ -30,7 +48,9 @@ void boatSpan_1(char** area)
     {
         int random = 1 + rand() % 15;
         int random_2 = 1 + rand() % 15;
-        if (area[random][random_2] == ' ') {
+        bool check_1 = area[random][random_2] == ' ' && area[random + 1][random_2] == ' ' && area[random - 1][random_2] == ' ' && area[random][random_2 - 1] == ' ' && area[random][random_2 + 1] == ' ' && area[random - 1][random_2 - 1] == ' ' && area[random + 1][random_2 - 1] == ' ' && area[random + 1][random_2 + 1] == ' ' && area[random - 1][random_2 + 1] == ' ';
+
+        if (check_1) {
             area[random][random_2] = '&';
             row = random;
             columbn = random_2;
@@ -46,23 +66,32 @@ void boatSpan_1(char** area)
 
 void left_func_Battle_size_1(char** area)
 {
-    if (area[row][columbn - 1] == ' ') {
-        area[row][columbn] = ' ';
-        area[row][columbn - 1] = '&';
-        columbn--;
+    if (area[row][columbn - 1] == ' ') 
+    {
+        bool check_arround_1 = area[row][columbn - 2] != '&' && area[row - 1][columbn - 2] != '&' && area[row + 1][columbn - 2] != '&' ;
+        if (check_arround_1 )
+        {
+            area[row][columbn] = ' ';
+            area[row][columbn - 1] = '&';
+            columbn--;
+        }
+        
     }
 
 }
 
 void right_func_Battle_size_1(char** area)
 {
-   
-
     if (area[row][columbn + 1] == ' ')
     {
-        area[row][columbn] = ' ';
-        area[row][columbn + 1] = '&';
-        columbn++;
+        bool check_arround_1 = area[row][columbn + 2] != '&' && area[row - 1][columbn + 2] != '&' && area[row + 1][columbn + 2] != '&';
+        if (check_arround_1)
+        {
+            area[row][columbn] = ' ';
+            area[row][columbn + 1] = '&';
+            columbn++;
+        }
+       
     }
 }
 
@@ -70,9 +99,14 @@ void down_func_Battle_size_1(char** area)
 {
     if (area[row + 1][columbn] == ' ')
     {
-        area[row][columbn] = ' ';
-        area[row + 1][columbn] = '&';
-        row++;
+        bool check_arround_1 = area[row + 2][columbn + 1] != '&' && area[row + 2][columbn] != '&' && area[row + 2][columbn - 1] != '&';
+        if (check_arround_1)
+        {
+            area[row][columbn] = ' ';
+            area[row + 1][columbn] = '&';
+            row++;
+        }
+
     }
 
 
@@ -83,9 +117,14 @@ void up_func_Battle_size_1(char** area)
 {
     if (area[row - 1][columbn] == ' ')
     {
-        area[row][columbn] = ' ';
-        area[row - 1][columbn] = '&';
-        row--;
+        bool check_arround_1 = area[row - 2][columbn + 1] != '&' && area[row - 2][columbn] != '&' && area[row - 2][columbn - 1] != '&';
+        if (check_arround_1)
+        {
+            area[row][columbn] = ' ';
+            area[row - 1][columbn] = '&';
+            row--;
+        }
+       
     }
 
 }
@@ -145,7 +184,10 @@ void boatSpan_2(char** area)
     {
         int random = 1 + rand() % 15;
         int random_2 = 1 + rand() % 15;
-        if (area[random][random_2] == ' ' && area[random][random_2 + 1] == ' ') {
+        bool check_1 = area[random][random_2] == ' ' && area[random + 1][random_2] == ' ' && area[random - 1][random_2] == ' ' && area[random][random_2 - 1] == ' ' && area[random - 1][random_2 - 1] == ' ' && area[random + 1][random_2 - 1] == ' ';
+        bool check_2 = area[random][random_2 + 1] == ' ' && area[random - 1][random_2 + 1] == ' ' && area[random + 1][random_2 + 1] == ' ' && area[random][random_2 + 3] == ' ' && area[random + 1][random_2 + 2] == ' ' && area[random - 1][random_2 + 2] == ' ';
+
+        if (check_1 && check_2) {
             area[random][random_2] = '&';
             area[random][random_2 + 1] = '&';
             row = random;
@@ -162,8 +204,13 @@ void left_func_Battle_size_2(char** area)
 {
     if (area[row][columbn - 1] == ' ') 
     {
-        area[row][columbn] = ' ';
-        area[row][columbn - 1] = '&';
+        bool check_arround_1 = area[row][columbn - 2] != '&' && area[row - 1][columbn - 2] != '&' && area[row + 1][columbn - 2] != '&';
+        if (check_arround_1)
+        {
+            area[row][columbn] = ' ';
+            area[row][columbn - 1] = '&';
+        }
+    
 
         if (area[row][columbn] == ' ')
         {
@@ -180,10 +227,13 @@ void right_func_Battle_size_2(char** area)
    
     if (area[row][columbn + 1 + 1] == ' ')
     {
-        area[row][columbn + 1] = ' ';
-        area[row][columbn + 1 + 1] = '&';
-
-
+        bool check_arround_2 = area[row][columbn + 3] != '&' && area[row - 1][columbn + 3] != '&' && area[row + 1][columbn + 3] != '&';
+        if ( check_arround_2)
+        {
+            area[row][columbn + 1] = ' ';
+            area[row][columbn + 1 + 1] = '&';
+        }
+      
         if (area[row][columbn + 1] == ' ')
         {
             area[row][columbn] = ' ';
@@ -198,17 +248,23 @@ void down_func_Battle_size_2(char** area)
 {
     if (area[row + 1][columbn] == ' ')
     {
-        area[row][columbn] = ' ';
-        area[row + 1][columbn] = '&';
-
-
-        if (area[row + 1][columbn + 1] == ' ')
+        bool check_arround_1 = area[row + 2][columbn + 1] != '&' && area[row + 2][columbn] != '&' && area[row + 2][columbn - 1] != '&';
+        bool check_arround_2 = area[row + 2][columbn + 2] != '&' && area[row + 2][columbn + 1] != '&' && area[row + 2][columbn] != '&';
+        if (check_arround_1 && check_arround_2)
         {
-            area[row][columbn + 1] = ' ';
-            area[row + 1][columbn + 1] = '&';
-            row++;
+            area[row][columbn] = ' ';
+            area[row + 1][columbn] = '&';
 
+            if (area[row + 1][columbn + 1] == ' ')
+            {
+                area[row][columbn + 1] = ' ';
+                area[row + 1][columbn + 1] = '&';
+                row++;
+
+            }
         }
+        
+       
 
     }
 }
@@ -218,16 +274,24 @@ void up_func_Battle_size_2(char** area)
 {
     if (area[row - 1][columbn] == ' ')
     {
-        area[row][columbn] = ' ';
-        area[row - 1][columbn] = '&';
-
-        if (area[row - 1][columbn + 1] == ' ')
+        bool check_arround_1 = area[row - 2][columbn + 1] != '&' && area[row - 2][columbn] != '&' && area[row - 2][columbn - 1] != '&';
+        bool check_arround_2 = area[row - 2][columbn + 2] != '&' && area[row - 2][columbn + 1] != '&' && area[row - 2][columbn] != '&';
+        if (check_arround_1 && check_arround_2)
         {
-            area[row][columbn + 1] = ' ';
-            area[row - 1][columbn + 1] = '&';
-            row--;
+            area[row][columbn] = ' ';
+            area[row - 1][columbn] = '&';
 
+            if (area[row - 1][columbn + 1] == ' ')
+            {
+                area[row][columbn + 1] = ' ';
+                area[row - 1][columbn + 1] = '&';
+                row--;
+
+            }
         }
+        
+
+     
     }
 }
 
@@ -287,7 +351,12 @@ void boatSpan_3(char** area)
     {
         int random = 1 + rand() % 15;
         int random_2 = 1 + rand() % 15;
-        if (area[random][random_2] == ' ' && area[random][random_2 + 1] == ' ' && area[random][random_2 + 2] == ' ') {
+
+        bool check_1 = area[random][random_2] == ' ' && area[random + 1][random_2] == ' ' && area[random - 1][random_2] == ' ' && area[random][random_2 - 1] == ' ' && area[random - 1][random_2 - 1] == ' ' && area[random + 1][random_2 - 1] == ' ';
+        bool check_2 = area[random][random_2 + 1] == ' ' && area[random - 1][random_2 + 1] == ' ' && area[random + 1][random_2 + 1] == ' ';
+        bool check_3 = area[random][random_2 + 2] == ' ' && area[random + 1][random_2 + 2] == ' ' && area[random - 1][random_2 + 2] == ' ' && area[random][random_2 + 3] == ' ' && area[random - 1][random_2 + 3] == ' ' && area[random + 1][random_2 + 3] == ' ';
+
+        if (check_1 && check_2 && check_3) {
             area[random][random_2] = '&';
             area[random][random_2 + 1] = '&';
             area[random][random_2 + 2] = '&';
@@ -306,21 +375,26 @@ void left_func_Battle_size_3(char** area)
 {
     if (area[row][columbn - 1] == ' ')
     {
-        area[row][columbn] = ' ';
-        area[row][columbn - 1] = '&';
-
-        if (area[row][columbn] == ' ')
+        bool check_arround_1 = area[row][columbn - 2] != '&' && area[row - 1][columbn - 2] != '&' && area[row + 1][columbn - 2] != '&';
+        if (check_arround_1)
         {
-            area[row][columbn + 1] = ' ';
-            area[row][columbn] = '&';
+            area[row][columbn] = ' ';
+            area[row][columbn - 1] = '&';
 
-            if (area[row][columbn + 1] == ' ')
+            if (area[row][columbn] == ' ')
             {
-                area[row][columbn + 2] = ' ';
-                area[row][columbn + 1] = '&';
-                columbn--;
+                area[row][columbn + 1] = ' ';
+                area[row][columbn] = '&';
+
+                if (area[row][columbn + 1] == ' ')
+                {
+                    area[row][columbn + 2] = ' ';
+                    area[row][columbn + 1] = '&';
+                    columbn--;
+                }
             }
         }
+      
 
      
     }
@@ -331,23 +405,26 @@ void right_func_Battle_size_3(char** area)
 {
     if (area[row][columbn + 3] == ' ')
     {
-        area[row][columbn + 2] = ' ';
-        area[row][columbn + 3] = '&';
-
-        if (area[row][columbn + 2] == ' ')
+        bool check_arround_2 = area[row][columbn + 4] != '&' && area[row - 1][columbn + 4] != '&' && area[row + 1][columbn + 4] != '&';
+        if (check_arround_2)
         {
-            area[row][columbn + 1] = ' ';
-            area[row][columbn + 2] = '&';
+            area[row][columbn + 2] = ' ';
+            area[row][columbn + 3] = '&';
 
-            if (area[row][columbn + 1] == ' ')
+            if (area[row][columbn + 2] == ' ')
             {
-                area[row][columbn] = ' ';
-                area[row][columbn + 1] = '&';
-                columbn++;
+                area[row][columbn + 1] = ' ';
+                area[row][columbn + 2] = '&';
+
+                if (area[row][columbn + 1] == ' ')
+                {
+                    area[row][columbn] = ' ';
+                    area[row][columbn + 1] = '&';
+                    columbn++;
+                }
             }
         }
-
-      
+       
     }
 
 }
@@ -356,27 +433,35 @@ void down_func_Battle_size_3(char** area)
 {
     if (area[row + 1][columbn] == ' ' && area[row + 1][columbn + 1] == ' ' && area[row + 1][columbn + 2] == ' ')
     {
-        if (area[row + 1][columbn] == ' ')
+        bool check_arround_1 = area[row + 2][columbn + 1] != '&' && area[row + 2][columbn] != '&' && area[row + 2][columbn - 1] != '&';
+        bool check_arround_2 = area[row + 2][columbn + 2] != '&' && area[row + 2][columbn + 1] != '&' && area[row + 2][columbn] != '&';
+        bool check_arround_3 = area[row + 2][columbn + 3] != '&' && area[row + 2][columbn + 2] != '&' && area[row + 2][columbn + 1] != '&';
+
+        if (check_arround_1 && check_arround_2 && check_arround_3)
         {
-            area[row][columbn] = ' ';
-            area[row + 1][columbn] = '&';
-
-            if (area[row + 1][columbn + 1] == ' ')
+            if (area[row + 1][columbn] == ' ')
             {
-                area[row][columbn + 1] = ' ';
-                area[row + 1][columbn + 1] = '&';
+                area[row][columbn] = ' ';
+                area[row + 1][columbn] = '&';
 
-                if (area[row + 1][columbn + 2] == ' ')
+                if (area[row + 1][columbn + 1] == ' ')
                 {
-                    area[row][columbn + 2] = ' ';
-                    area[row + 1][columbn + 2] = '&';
-                    row++;
+                    area[row][columbn + 1] = ' ';
+                    area[row + 1][columbn + 1] = '&';
+
+                    if (area[row + 1][columbn + 2] == ' ')
+                    {
+                        area[row][columbn + 2] = ' ';
+                        area[row + 1][columbn + 2] = '&';
+                        row++;
+
+                    }
 
                 }
 
             }
-
         }
+      
     }
   
 
@@ -388,28 +473,35 @@ void up_func_Battle_size_3(char** area)
 {
     if (area[row - 1][columbn] == ' ' && area[row - 1][columbn + 1] == ' ' && area[row - 1][columbn + 2] == ' ')
     {
-        if (area[row - 1][columbn] == ' ')
+        bool check_arround_1 = area[row - 2][columbn + 1] != '&' && area[row - 2][columbn] != '&' && area[row - 2][columbn - 1] != '&';
+        bool check_arround_2 = area[row - 2][columbn + 2] != '&' && area[row - 2][columbn + 1] != '&' && area[row - 2][columbn] != '&';
+        bool check_arround_3 = area[row - 2][columbn + 3] != '&' && area[row - 2][columbn + 2] != '&' && area[row - 2][columbn + 1] != '&';
+        if (check_arround_1 && check_arround_2 && check_arround_3)
         {
-            area[row][columbn] = ' ';
-            area[row - 1][columbn] = '&';
-
-            if (area[row - 1][columbn + 1] == ' ')
+            if (area[row - 1][columbn] == ' ')
             {
-                area[row][columbn + 1] = ' ';
-                area[row - 1][columbn + 1] = '&';
+                area[row][columbn] = ' ';
+                area[row - 1][columbn] = '&';
 
-                if (area[row - 1][columbn + 2] == ' ')
+                if (area[row - 1][columbn + 1] == ' ')
                 {
-                    area[row][columbn + 2] = ' ';
-                    area[row - 1][columbn + 2] = '&';
-                    row--;
+                    area[row][columbn + 1] = ' ';
+                    area[row - 1][columbn + 1] = '&';
+
+                    if (area[row - 1][columbn + 2] == ' ')
+                    {
+                        area[row][columbn + 2] = ' ';
+                        area[row - 1][columbn + 2] = '&';
+                        row--;
+
+                    }
 
                 }
 
+
             }
-
-
         }
+       
     }
 
 
@@ -472,7 +564,12 @@ void boatSpan_4(char** area)
     {
         int random = 1 + rand() % 15;
         int random_2 = 1 + rand() % 15;
-        if (area[random][random_2] == ' ' && area[random][random_2 + 1] == ' ' && area[random][random_2 + 2] == ' ' && area[random][random_2 + 3] == ' ' ) {
+        bool check_1 = area[random][random_2] == ' ' && area[random + 1][random_2] == ' ' && area[random - 1][random_2] == ' ' && area[random][random_2 - 1] == ' ' && area[random - 1][random_2 - 1] == ' ' && area[random + 1][random_2 - 1] == ' ';
+        bool check_2 = area[random][random_2 + 1] == ' ' && area[random - 1][random_2 + 1] == ' ' && area[random + 1][random_2 + 1] == ' ';
+        bool check_3 = area[random][random_2 + 2] == ' ' && area[random - 1][random_2 + 2] == ' ' && area[random + 1][random_2 + 2] == ' ';
+        bool check_4 = area[random][random_2 + 3] == ' ' && area[random + 1][random_2 + 3] == ' ' && area[random - 1][random_2 + 3] == ' ' && area[random][random_2 + 4] == ' ' && area[random - 1][random_2 + 4] == ' ' && area[random + 1][random_2 + 4] == ' ';
+
+        if (check_1 && check_2 && check_3 && check_4) {
             area[random][random_2] = '&';
             area[random][random_2 + 1] = '&';
             area[random][random_2 + 2] = '&';
@@ -492,27 +589,32 @@ void left_func_Battle_size_4(char** area)
 {
     if (area[row][columbn - 1] == ' ')
     {
-        area[row][columbn] = ' ';
-        area[row][columbn - 1] = '&';
-
-        if (area[row][columbn] == ' ')
+        bool check_arround_1 = area[row][columbn - 2] != '&' && area[row - 1][columbn - 2] != '&' && area[row + 1][columbn - 2] != '&';
+        if (check_arround_1)
         {
-            area[row][columbn + 1] = ' ';
-            area[row][columbn] = '&';
-        }
+            area[row][columbn] = ' ';
+            area[row][columbn - 1] = '&';
 
-        if (area[row][columbn + 1] == ' ')
-        {
-            area[row][columbn + 2] = ' ';
-            area[row][columbn + 1] = '&';
-        }
+            if (area[row][columbn] == ' ')
+            {
+                area[row][columbn + 1] = ' ';
+                area[row][columbn] = '&';
+            }
 
-        if (area[row][columbn + 2] == ' ')
-        {
-            area[row][columbn + 3] = ' ';
-            area[row][columbn + 2] = '&';
-            columbn--;
+            if (area[row][columbn + 1] == ' ')
+            {
+                area[row][columbn + 2] = ' ';
+                area[row][columbn + 1] = '&';
+            }
+
+            if (area[row][columbn + 2] == ' ')
+            {
+                area[row][columbn + 3] = ' ';
+                area[row][columbn + 2] = '&';
+                columbn--;
+            }
         }
+       
     }
 }
 
@@ -520,27 +622,32 @@ void right_func_Battle_size_4(char** area)
 {
     if (area[row][columbn + 4] == ' ')
     {
-        area[row][columbn + 3] = ' ';
-        area[row][columbn + 4] = '&';
-
-        if (area[row][columbn + 3] == ' ')
+        bool check_arround_2 = area[row][columbn + 5] != '&' && area[row - 1][columbn + 5] != '&' && area[row + 1][columbn + 5] != '&';
+        if (check_arround_2)
         {
-            area[row][columbn + 2] = ' ';
-            area[row][columbn + 3] = '&';
-        }
+            area[row][columbn + 3] = ' ';
+            area[row][columbn + 4] = '&';
 
-        if (area[row][columbn + 2] == ' ')
-        {
-            area[row][columbn + 1] = ' ';
-            area[row][columbn + 2] = '&';
-        }
+            if (area[row][columbn + 3] == ' ')
+            {
+                area[row][columbn + 2] = ' ';
+                area[row][columbn + 3] = '&';
+            }
 
-        if (area[row][columbn + 1] == ' ')
-        {
-            area[row][columbn] = ' ';
-            area[row][columbn + 1] = '&';
-            columbn++;
+            if (area[row][columbn + 2] == ' ')
+            {
+                area[row][columbn + 1] = ' ';
+                area[row][columbn + 2] = '&';
+            }
+
+            if (area[row][columbn + 1] == ' ')
+            {
+                area[row][columbn] = ' ';
+                area[row][columbn + 1] = '&';
+                columbn++;
+            }
         }
+       
     }
 }
 
@@ -548,33 +655,41 @@ void down_func_Battle_size_4(char** area)
 {
     if (area[row + 1][columbn] == ' ' && area[row + 1][columbn + 1] == ' ' && area[row + 1][columbn + 2] == ' ' && area[row + 1][columbn + 3] == ' ')
     {
-        if (area[row + 1][columbn] == ' ')
+        bool check_arround_1 = area[row + 2][columbn + 1] != '&' && area[row + 2][columbn] != '&' && area[row + 2][columbn - 1] != '&';
+        bool check_arround_2 = area[row + 2][columbn + 2] != '&' && area[row + 2][columbn + 1] != '&' && area[row + 2][columbn] != '&';
+        bool check_arround_3 = area[row + 2][columbn + 3] != '&' && area[row + 2][columbn + 2] != '&' && area[row + 2][columbn + 1] != '&';
+        bool check_arround_4 = area[row + 2][columbn + 4] != '&' && area[row + 2][columbn + 3] != '&' && area[row + 2][columbn + 2] != '&';
+        if (check_arround_1 && check_arround_2 && check_arround_3 && check_arround_4)
         {
-            area[row][columbn] = ' ';
-            area[row + 1][columbn] = '&';
-
-            if (area[row + 1][columbn + 1] == ' ')
+            if (area[row + 1][columbn] == ' ')
             {
-                area[row][columbn + 1] = ' ';
-                area[row + 1][columbn + 1] = '&';
+                area[row][columbn] = ' ';
+                area[row + 1][columbn] = '&';
 
-            }
+                if (area[row + 1][columbn + 1] == ' ')
+                {
+                    area[row][columbn + 1] = ' ';
+                    area[row + 1][columbn + 1] = '&';
 
-            if (area[row + 1][columbn + 2] == ' ')
-            {
-                area[row][columbn + 2] = ' ';
-                area[row + 1][columbn + 2] = '&';
+                }
 
-            }
+                if (area[row + 1][columbn + 2] == ' ')
+                {
+                    area[row][columbn + 2] = ' ';
+                    area[row + 1][columbn + 2] = '&';
 
-            if (area[row + 1][columbn + 3] == ' ')
-            {
-                area[row][columbn + 3] = ' ';
-                area[row + 1][columbn + 3] = '&';
-                row++;
+                }
 
+                if (area[row + 1][columbn + 3] == ' ')
+                {
+                    area[row][columbn + 3] = ' ';
+                    area[row + 1][columbn + 3] = '&';
+                    row++;
+
+                }
             }
         }
+        
     }
 }
 
@@ -582,34 +697,42 @@ void down_func_Battle_size_4(char** area)
 void up_func_Battle_size_4(char** area)
 {
     if (area[row - 1][columbn] == ' ' && area[row - 1][columbn + 1] == ' ' && area[row - 1][columbn + 2] == ' ' && area[row - 1][columbn + 3] == ' ')
-
     {
-        if (area[row - 1][columbn] == ' ')
+
+        bool check_arround_1 = area[row - 2][columbn + 1] != '&' && area[row - 2][columbn] != '&' && area[row - 2][columbn - 1] != '&';
+        bool check_arround_2 = area[row - 2][columbn + 2] != '&' && area[row - 2][columbn + 1] != '&' && area[row - 2][columbn] != '&';
+        bool check_arround_3 = area[row - 2][columbn + 3] != '&' && area[row - 2][columbn + 2] != '&' && area[row - 2][columbn + 1] != '&';
+        bool check_arround_4 = area[row - 2][columbn + 4] != '&' && area[row - 2][columbn + 4] != '&' && area[row - 2][columbn + 4] != '&';
+        if (check_arround_1 && check_arround_2 && check_arround_3 && check_arround_4)
         {
-            area[row][columbn] = ' ';
-            area[row - 1][columbn] = '&';
-
-            if (area[row - 1][columbn + 1] == ' ')
+            if (area[row - 1][columbn] == ' ')
             {
-                area[row][columbn + 1] = ' ';
-                area[row - 1][columbn + 1] = '&';
+                area[row][columbn] = ' ';
+                area[row - 1][columbn] = '&';
 
-            }
-            if (area[row - 1][columbn + 2] == ' ')
-            {
-                area[row][columbn + 2] = ' ';
-                area[row - 1][columbn + 2] = '&';
+                if (area[row - 1][columbn + 1] == ' ')
+                {
+                    area[row][columbn + 1] = ' ';
+                    area[row - 1][columbn + 1] = '&';
 
-            }
+                }
+                if (area[row - 1][columbn + 2] == ' ')
+                {
+                    area[row][columbn + 2] = ' ';
+                    area[row - 1][columbn + 2] = '&';
 
-            if (area[row - 1][columbn + 3] == ' ')
-            {
-                area[row][columbn + 3] = ' ';
-                area[row - 1][columbn + 3] = '&';
-                row--;
+                }
 
+                if (area[row - 1][columbn + 3] == ' ')
+                {
+                    area[row][columbn + 3] = ' ';
+                    area[row - 1][columbn + 3] = '&';
+                    row--;
+
+                }
             }
         }
+      
     }
 }
 
@@ -665,6 +788,7 @@ void Battle_Size_4_Move()
 
 bool choice_vertical = false;
 bool choice_horizontal = false;
+bool choice_Back_Horizontal_vertical_Menu = false;
 void AskToPlayer_Vertical_Or_Horizontal()
 {
 
@@ -685,12 +809,14 @@ void AskToPlayer_Vertical_Or_Horizontal()
         cout << "VERTICAL\n";
         arrowHere_2(2, position);
         cout << "HORIZONTAL \n";
+        arrowHere_2(3, position);
+        cout << "BACK \n";
 
 
 
         keyPressed = _getch();
 
-        if (keyPressed == 80 && position != 2)
+        if (keyPressed == 80 && position != 3)
         {
             position++;
         }
@@ -715,6 +841,11 @@ void AskToPlayer_Vertical_Or_Horizontal()
         system("cls");
         SetConsoleTextAttribute(console, 7);
         choice_horizontal = true;
+        break;
+    case 3:
+        system("cls");
+        SetConsoleTextAttribute(console, 7);
+        choice_Back_Horizontal_vertical_Menu = true;
         break;
     }
 }

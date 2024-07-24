@@ -77,8 +77,7 @@ void fill_Random_By_Bot_4(char**BotBoard)
 		{
 			int random_1 = 1 + rand() % 14;  //1
 			int random_2 = 1 + rand() % 14;   //10
-			bool check_Boat_4 = BotBoard[random_1][random_2] == ' ' && BotBoard[random_1 + 1][random_2] == ' ' && BotBoard[random_1 + 2][random_2] == ' ' && BotBoard[random_1 + 3][random_2] == ' ';
-			//bool Check_Arround_Empty = 
+			bool check_Boat_4 = BotBoard[random_1][random_2] == ' ' && BotBoard[random_1 + 1][random_2] == ' ' && BotBoard[random_1 + 2][random_2] == ' ' && BotBoard[random_1 + 3][random_2] == ' ' ;
 			if (check_Boat_4) {
 				BotBoard[random_1][random_2] = '&';
 				BotBoard[random_1 + 1][random_2] = '&';
@@ -130,9 +129,11 @@ void fill_Random_By_Bot_3(char** BotBoard)
 			bool check_Arround_Empty_1 = BotBoard[random_1 - 1][random_2] != '&'  && BotBoard[random_1][random_2 - 1] != '&'  && BotBoard[random_1][random_2 + 1] != '&' ;
 			bool check_Arround_Empty_2 = BotBoard[random_1 + 1][random_2 - 1] != '&'  && BotBoard[random_1 + 1][random_2 + 1] != '&' ;
 			bool check_Arround_Empty_3 = BotBoard[random_1 + 2][random_2 - 1] != '&' && BotBoard[random_1 + 2][random_2 + 1] != '&' && BotBoard[random_1 + 3][random_2] != '&';
+			bool check_Charpaz_empty_1 = BotBoard[random_1 - 1][random_2 - 1] != '&' && BotBoard[random_1 - 1][random_2 + 1] != '&' && BotBoard[random_1 + 1][random_2 - 1] != '&' && BotBoard[random_1 + 1][random_2 + 1] != '&';
+			bool check_Charpaz_empty_3 = BotBoard[random_1 + 3][random_2 - 1] != '&' && BotBoard[random_1 + 3][random_2 + 1] != '&' ;
 
 
-			if (check_Boat_3 && check_Arround_Empty_1 && check_Arround_Empty_2 && check_Arround_Empty_3) {
+			if (check_Boat_3 && check_Arround_Empty_1 && check_Arround_Empty_2 && check_Arround_Empty_3 && check_Charpaz_empty_1 && check_Charpaz_empty_3) {
 				BotBoard[random_1][random_2] = '&';
 				BotBoard[random_1 + 1][random_2] = '&';
 				BotBoard[random_1 + 2][random_2] = '&';
@@ -154,9 +155,11 @@ void fill_Random_By_Bot_3(char** BotBoard)
 			bool check_Arround_Empty_1 = BotBoard[random_1 - 1][random_2] != '&' && BotBoard[random_1][random_2 - 1] != '&' && BotBoard[random_1 + 1][random_2] != '&';
 			bool check_Arround_Empty_2 = BotBoard[random_1 - 1][random_2 + 1] != '&' && BotBoard[random_1 + 1][random_2 + 1] != '&' ;
 			bool check_Arround_Empty_3 = BotBoard[random_1 -1 ][random_2 + 2] != '&'  && BotBoard[random_1 + 1][random_2 + 2] != '&'  && BotBoard[random_1 ][random_2 + 3] != '&' ;
+			bool check_Charpaz_empty_1 = BotBoard[random_1 - 1][random_2 - 1] != '&' && BotBoard[random_1 - 1][random_2 + 1] != '&' && BotBoard[random_1 + 1][random_2 - 1] != '&' && BotBoard[random_1 + 1][random_2 + 1] != '&';
+			bool check_Charpaz_empty_3 = BotBoard[random_1 + 1][random_2 + 3] != '&' && BotBoard[random_1 - 1][random_2 + 3] != '&' ;
 
 
-			if (check_Boat_3 && check_Arround_Empty_1 && check_Arround_Empty_2 && check_Arround_Empty_3) {
+			if (check_Boat_3 && check_Arround_Empty_1 && check_Arround_Empty_2 && check_Arround_Empty_3 && check_Charpaz_empty_1 && check_Charpaz_empty_3) {
 				BotBoard[random_1][random_2] = '&';
 				BotBoard[random_1][random_2 + 1] = '&';
 				BotBoard[random_1][random_2 + 2] = '&';
@@ -185,7 +188,10 @@ void fill_Random_By_Bot_2(char** BotBoard)
 			bool check_Boat_2 = BotBoard[random_1][random_2] == ' ' && BotBoard[random_1 + 1][random_2] == ' ';
 			bool check_Arround_Empty_1 = BotBoard[random_1 - 1][random_2] != '&'  && BotBoard[random_1 ][random_2 - 1] != '&'  && BotBoard[random_1][random_2 + 1] != '&'  ;
 			bool check_Arround_Empty_2 = BotBoard[random_1 + 1][random_2 - 1 ] != '&' && BotBoard[random_1 + 1][random_2 + 1] != '&'  && BotBoard[random_1 + 2][random_2] != '&' ;
-			if (check_Boat_2 && check_Arround_Empty_1 && check_Arround_Empty_2) {
+			bool check_Charpaz_empty_1 = BotBoard[random_1 - 1][random_2 - 1] != '&' && BotBoard[random_1 - 1][random_2 + 1] != '&' && BotBoard[random_1 + 1][random_2 - 1] != '&' && BotBoard[random_1 + 1][random_2 + 1] != '&';
+			bool check_Charpaz_empty_2 = BotBoard[random_1 + 2][random_2 + 1] != '&' && BotBoard[random_1 + 2][random_2 - 1] != '&' ;
+
+			if (check_Boat_2 && check_Arround_Empty_1 && check_Arround_Empty_2 && check_Charpaz_empty_1 && check_Charpaz_empty_2) {
 				BotBoard[random_1][random_2] = '&';
 				BotBoard[random_1 + 1][random_2] = '&';
 				break;
@@ -205,7 +211,10 @@ void fill_Random_By_Bot_2(char** BotBoard)
 			bool check_Boat_2 = BotBoard[random_1][random_2] == ' ' && BotBoard[random_1][random_2 + 1] == ' '  ;
 			bool check_Arround_Empty_1 = BotBoard[random_1 - 1][random_2] != '&' && BotBoard[random_1][random_2 - 1] != '&' && BotBoard[random_1 + 1][random_2 ] != '&';
 			bool check_Arround_Empty_2 = BotBoard[random_1 - 1][random_2 + 1] != '&' && BotBoard[random_1 + 1][random_2 + 1] != '&' && BotBoard[random_1 ][random_2 + 2] != '&';
-			if (check_Boat_2 && check_Arround_Empty_1 && check_Arround_Empty_2) {
+			bool check_Charpaz_empty_1 = BotBoard[random_1 - 1][random_2 - 1] != '&' && BotBoard[random_1 - 1][random_2 + 1] != '&' && BotBoard[random_1 + 1][random_2 - 1] != '&' && BotBoard[random_1 + 1][random_2 + 1] != '&';
+			bool check_Charpaz_empty_2 = BotBoard[random_1 - 1][random_2 + 2] != '&' && BotBoard[random_1 + 1][random_2 + 2] != '&' ;
+
+			if (check_Boat_2 && check_Arround_Empty_1 && check_Arround_Empty_2 && check_Charpaz_empty_1 && check_Charpaz_empty_2) {
 				BotBoard[random_1][random_2] = '&';
 				BotBoard[random_1][random_2 + 1] = '&';
 				break;
@@ -233,7 +242,9 @@ void fill_Random_By_Bot_1(char** BotBoard)
 			int random_2 = 1 + rand() % 13;   //10
 			bool check_Boat_2 = BotBoard[random_1][random_2] == ' '  ;
 			bool check_Arround_Empty_1 = BotBoard[random_1 + 1][random_2] != '&' && BotBoard[random_1 - 1][random_2] != '&' && BotBoard[random_1][random_2 + 1] != '&' && BotBoard[random_1][random_2 - 1] != '&' ;
-			if (check_Boat_2 && check_Arround_Empty_1) {
+			bool check_Charpaz_empty = BotBoard[random_1 - 1][random_2 - 1] != '&' && BotBoard[random_1 - 1][random_2 + 1] != '&' && BotBoard[random_1 + 1][random_2 - 1] != '&' && BotBoard[random_1 + 1][random_2 + 1] != '&';
+
+			if (check_Boat_2 && check_Arround_Empty_1 && check_Charpaz_empty) {
 				
 				
 				BotBoard[random_1][random_2] = '&';
@@ -254,8 +265,8 @@ void fill_Random_By_Bot_1(char** BotBoard)
 			int random_2 = 1 + rand() % 13;   //10
 			bool check_Boat_2 = BotBoard[random_1][random_2] == ' ';
 			bool check_Arround_Empty_1 = BotBoard[random_1 + 1][random_2] != '&' && BotBoard[random_1 - 1][random_2] != '&' && BotBoard[random_1][random_2 + 1] != '&' && BotBoard[random_1][random_2 - 1] != '&';
-
-			if (check_Boat_2&&check_Arround_Empty_1) {
+			bool check_Charpaz_empty = BotBoard[random_1 - 1][random_2 - 1] != '&' && BotBoard[random_1 - 1][random_2 + 1] != '&' && BotBoard[random_1 + 1][random_2 - 1] != '&' && BotBoard[random_1 + 1][random_2 + 1] != '&';
+			if (check_Boat_2&&check_Arround_Empty_1 && check_Charpaz_empty) {
 				
 				BotBoard[random_1][random_2] = '&';
 				break;

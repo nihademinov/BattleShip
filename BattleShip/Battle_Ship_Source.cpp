@@ -23,11 +23,10 @@ char** BoardPlayer = CreatePlayerBoard(sizeBoard);
 #include "BotBoardsFunctions.h"
 #include "functions Choice1 and Choice2 with Menu.h"
 #include "PutBoatsOnArea.h"
-#include "BackMenu.h"
-#include "choice Boat size.h"
 #include "Battle sizes horizontal.h"
 #include "Battle sizes vertical.h"
 #include "Hit_Player.h"
+#include "Hit_Bot.h"
 
 
 int main() {
@@ -69,23 +68,71 @@ int main() {
 				fill_Random_By_Bot_1(BoardBot);
 				fill_Random_By_Bot_1(BoardBot);
 				fill_Random_By_Bot_1(BoardBot);
-				//printOnlyEmpytyBotBoard(BoardBot, sizeBoard);
-				//show_Bot_Board(FakeBoardBot, sizeBoard);
-
-
-
-				while (true)
-				{
-					Hit_Span(FakeBoardBot);
-					Hit_Span_Move();
-					//check_Hit(BoardBot,FakeBoardBot);
-				}
-				
-
-
-				//printBotBoard(BoardBot, sizeBoard);
-				
 			
+				bool Loop_check = true;
+
+				while (Loop_check)
+				{
+					if (score_Bot == 20 || score_Player == 20)
+					{
+						Loop_check = false;
+						break;
+
+					}
+
+					while (check_)
+					{
+
+						Hit_Span(FakeBoardBot);
+
+
+						Hit_Span_Move();
+						check_ = false;
+					}
+
+					if (!check_)
+					{
+						while (check_Player_board)
+						{
+							if (check_Player_board && check_Seccond_hit)
+							{
+								Clever_Bot_Hit(BoardPlayer);
+							}
+							else
+							{
+								Hit_Bot_to_Player(BoardPlayer);
+								check_ = false;
+							}
+							
+						}
+						if (!check_Player_board)
+						{
+							check_ = true;
+							check_Player_board = true;
+						}
+						
+					}
+				}
+
+				
+				
+
+
+				if (score_Bot == 20)
+				{
+
+					const char* End_text_bot = "YOU ARE LOSER.TRY AGAIN";
+					cout << endl;
+					cout << endl;
+					ColorText(End_text_bot);
+				}
+				if (score_Player == 20)
+				{
+					const char* End_text_player = "YOU ARE WINNER.GOOD JOB";
+					cout << endl;
+					cout << endl;
+					ColorText(End_text_player);
+				}
 				break;
 
 
@@ -206,6 +253,17 @@ int main() {
 							boat_size_2 = false;
 							choice_horizontal = false;
 						}
+						if (choice_Back_Horizontal_vertical_Menu)
+						{
+							boat_size_1 = false;
+							boat_size_2 = false;
+							boat_size_3 = false;
+							boat_size_4 = false;
+							choice_horizontal = false;
+							choice_vertical = false;
+							continue;
+
+						}
 				
 					}
 
@@ -262,9 +320,57 @@ int main() {
 
 		
 
-				Hit_Span(FakeBoardBot);
-				Hit_Span_Move();
-				check_Hit(BoardBot, FakeBoardBot);
+				bool Loop_check_2 = true;
+				while (Loop_check_2)
+				{
+					if (count_bot_Battle == 20 || count_player_Battle == 20)
+					{
+						Loop_check_2 = false;
+						break;
+					}
+
+					while (check_)
+					{
+
+						Hit_Span(FakeBoardBot);
+
+
+
+						Hit_Span_Move();
+					}
+
+					if (!check_)
+					{
+						while (check_Player_board)
+						{
+							Hit_Bot_to_Player(BoardPlayer);
+							check_ = false;
+						}
+						if (!check_Player_board)
+						{
+							check_ = true;
+							check_Player_board = true;
+						}
+
+					}
+				}
+
+				if (count_player_Battle == 20)
+				{
+
+					const char* End_text_bot = "YOU ARE LOSER.TRY AGAIN";
+					cout << endl;
+					cout << endl;
+					ColorText(End_text_bot);
+				}
+				if (count_bot_Battle == 20)
+				{
+					const char* End_text_player = "YOU ARE WINNER.GOOD JOB";
+					cout << endl;
+					cout << endl;
+					ColorText(End_text_player);
+				}
+
 
 				break;
 			}

@@ -136,6 +136,7 @@
     <ClInclude Include="BotBoardsFunctions.h" />
     <ClInclude Include="creat boards.h" />
     <ClInclude Include="functions Choice1 and Choice2 with Menu.h" />
+    <ClInclude Include="Hit_Bot.h" />
     <ClInclude Include="Hit_Player.h" />
     <ClInclude Include="PlayerBoards.h" />
     <ClInclude Include="PutBoatsOnArea.h" />

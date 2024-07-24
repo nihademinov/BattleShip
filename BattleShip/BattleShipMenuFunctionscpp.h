@@ -1,34 +1,35 @@
-#pragma once
+﻿#pragma once
 
 HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
 void PrintGameName()
 {
-	char line1[] = "* * * * *              *           * * * * * * *     * * * * * * *       *                * * * * * *      * * * * * * *           *         *      **      * * * * * *           ";
-	char line2[] = "*       *             * *                *                 *             *                *                **           **         *         *              *         *                         ";
-	char line3[] = "*       *            *   *               *                 *             *                *                  **                    *         *      **      *         *                    ";
-	char line4[] = "*       *           *     *              *                 *             *                *                    **                  *         *      **      * * * * * *                    ";
-	char line5[] = "* * * * * *        * * * * *             *                 *             *                * * * * * *            ***               * * * * * *      **      *                       ";
-	char line6[] = "*         *       *         *            *                 *             *                *                         **             *         *      **      *                     ";
-	char line7[] = "*         *      *           *           *                 *             *                *                           * * *        *         *      **      *                    ";
-	char line8[] = "*         *     *             *          *                 *             *                *                                **      *         *      **      *                     ";
-	char line9[] = "* * * * * *    *               *         *                 *             * * * * * *      * * * * * *          * * * * * * * *     *         *      **      *                            ";
-
 	SetConsoleTextAttribute(console, 12);
-	cout << line1 << endl;
-	cout << line2 << endl;
-	cout << line3 << endl;
-	cout << line4 << endl;
-	cout << line5 << endl;
-	cout << line6 << endl;
-	cout << line7 << endl;
-	cout << line8 << endl;
-	cout << line9 << endl;
+
+
+	const char* logo = R"V0G0N(
+
+
+                                                 ______        __      _________ _________ _____    _________      _______ ____  ____ _____ ______   
+                                                |_   _ \      /  \    |  _   _  |  _   _  |_   _|  |_   ___  |    /  ___  |_   ||   _|_   _|_   __ \ 
+                                                  | |_) |    / /\ \   |_/ | | \_|_/ | | \_| | |      | |_  \_|   |  (__ \_| | |__| |   | |   | |__) |
+                                                  |  __/.   / ____ \      | |       | |     | |   _  |  _|  _     '.___\-.  |  __  |   | |   |  ___/ 
+                                                 _| |__) |_/ /    \ \_   _| |_     _| |_   _| |__/ |_| |___/ |   |\\____) |_| |  | |_ _| |_ _| |_    
+                                                |_______/|____|  |____| |_____|   |_____| |________|_________|   |_______.'____||____|_____|_____|   
+
+							          
+
+
+
+       
+)V0G0N";
+
+	cout << logo;
 	SetConsoleTextAttribute(console, 7);
-	cout << endl;
-	cout << endl;
-	cout << endl;
+
 
 }
+
+
 
 
 void arrowHere(int realPosition, int arrowPosition) {

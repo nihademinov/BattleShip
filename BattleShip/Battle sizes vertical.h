@@ -24,19 +24,24 @@ void left_func_Battle_size_2_vertical(char** area)
 {
     if (area[row][columbn - 1] == ' ' && area[row + 1][columbn - 1] == ' ')
     {
-        if (area[row][columbn - 1] == ' ')
+        bool check_Arround_1 = area[row][columbn - 2] != '&' && area[row + 1][columbn - 2] != '&' && area[row + 2][columbn - 2] != '&' && area[row + 2][columbn - 2] != '&' && area[row - 1][columbn - 2] != '&';
+        if (check_Arround_1)
         {
-            area[row][columbn] = ' ';
-            area[row][columbn - 1] = '&';
-
-
-            if (area[row + 1][columbn - 1] == ' ')
+            if (area[row][columbn - 1] == ' ')
             {
-                area[row + 1][columbn] = ' ';
-                area[row + 1][columbn - 1] = '&';
-                columbn--;
+                area[row][columbn] = ' ';
+                area[row][columbn - 1] = '&';
+
+
+                if (area[row + 1][columbn - 1] == ' ')
+                {
+                    area[row + 1][columbn] = ' ';
+                    area[row + 1][columbn - 1] = '&';
+                    columbn--;
+                }
             }
         }
+      
     }
 }
 
@@ -44,18 +49,23 @@ void right_func_Battle_size_2_vertical(char** area)
 {
     if (area[row + 1][columbn + 1] == ' ' && area[row][columbn + 1] == ' ')
     {
-        if (area[row + 1][columbn + 1] == ' ')
+        bool check_Arround_1 = area[row][columbn + 2] != '&' && area[row + 1][columbn + 2] != '&' && area[row + 2][columbn + 2] != '&' && area[row + 2][columbn + 2] != '&' && area[row - 1][columbn + 2] != '&';
+        if (check_Arround_1)
         {
-            area[row + 1][columbn] = ' ';
-            area[row + 1][columbn + 1] = '&';
-
-            if (area[row][columbn + 1] == ' ')
+            if (area[row + 1][columbn + 1] == ' ')
             {
-                area[row][columbn] = ' ';
-                area[row][columbn + 1] = '&';
-                columbn++;
+                area[row + 1][columbn] = ' ';
+                area[row + 1][columbn + 1] = '&';
+
+                if (area[row][columbn + 1] == ' ')
+                {
+                    area[row][columbn] = ' ';
+                    area[row][columbn + 1] = '&';
+                    columbn++;
+                }
             }
         }
+       
     }
 }
 
@@ -63,16 +73,21 @@ void down_func_Battle_size_2_vertical(char** area)
 {
     if (area[row + 1][columbn] == '&')
     {
-        area[row][columbn] = ' ';
-        area[row + 1][columbn] = '&';
-
-        if (area[row + 2][columbn] == ' ')
+        bool check_Arround_1 = area[row + 3][columbn] != '&' && area[row + 3][columbn + 1] != '&' && area[row + 3][columbn - 1] != '&';
+        if (check_Arround_1)
         {
-            area[row + 2][columbn] = ' ';
-            area[row + 2][columbn] = '&';
-            row++;
+            area[row][columbn] = ' ';
+            area[row + 1][columbn] = '&';
 
+            if (area[row + 2][columbn] == ' ')
+            {
+                area[row + 2][columbn] = ' ';
+                area[row + 2][columbn] = '&';
+                row++;
+
+            }
         }
+       
 
     }
 }
@@ -81,16 +96,21 @@ void up_func_Battle_size_2_vertical(char** area)
 {
     if (area[row - 1][columbn] == ' ')
     {
-        area[row][columbn] = ' ';
-        area[row - 1][columbn] = '&';
-
-        if (area[row][columbn] == ' ')
+        bool check_Arround_1 = area[row - 2][columbn] != '&' && area[row - 2][columbn + 1] != '&' && area[row - 2][columbn - 1] != '&';
+        if (check_Arround_1)
         {
-            area[row + 1][columbn] = ' ';
-            area[row][columbn] = '&';
-            row--;
+            area[row][columbn] = ' ';
+            area[row - 1][columbn] = '&';
 
+            if (area[row][columbn] == ' ')
+            {
+                area[row + 1][columbn] = ' ';
+                area[row][columbn] = '&';
+                row--;
+
+            }
         }
+       
     }
 }
 
@@ -164,24 +184,29 @@ void left_func_Battle_size_3_vertical(char** area)
 {
     if (area[row][columbn - 1] == ' ' && area[row + 1][columbn - 1] == ' ' && area[row + 2][columbn - 1] == ' ')
     {
-        if (area[row][columbn - 1] == ' ')
+        bool check_Arround_1 = area[row][columbn - 2] != '&' && area[row + 1][columbn - 2] != '&' && area[row + 2][columbn - 2] != '&' && area[row - 1][columbn - 2] != '&' && area[row + 3][columbn - 2] != '&';
+        if (check_Arround_1)
         {
-            area[row][columbn] = ' ';
-            area[row][columbn - 1] = '&';
-
-            if (area[row + 1][columbn - 1] == ' ')
+            if (area[row][columbn - 1] == ' ')
             {
-                area[row + 1][columbn] = ' ';
-                area[row + 1][columbn - 1] = '&';
-            }
+                area[row][columbn] = ' ';
+                area[row][columbn - 1] = '&';
 
-            if (area[row + 2][columbn - 1] == ' ')
-            {
-                area[row + 2][columbn] = ' ';
-                area[row + 2][columbn - 1] = '&';
-                columbn--;
+                if (area[row + 1][columbn - 1] == ' ')
+                {
+                    area[row + 1][columbn] = ' ';
+                    area[row + 1][columbn - 1] = '&';
+                }
+
+                if (area[row + 2][columbn - 1] == ' ')
+                {
+                    area[row + 2][columbn] = ' ';
+                    area[row + 2][columbn - 1] = '&';
+                    columbn--;
+                }
             }
         }
+       
     }
 }
 
@@ -189,24 +214,29 @@ void right_func_Battle_size_3_vertical(char** area)
 {
     if (area[row + 2][columbn + 1] == ' ' && area[row + 1][columbn + 1] == ' ' && area[row][columbn + 1] == ' ')
     {
-        if (area[row + 2][columbn + 1] == ' ')
+        bool check_Arround_1 = area[row][columbn + 2] != '&' && area[row + 1][columbn + 2] != '&' && area[row + 2][columbn + 2] != '&' && area[row - 1][columbn + 2] != '&' && area[row + 3][columbn + 2] != '&';
+        if (check_Arround_1)
         {
-            area[row + 2][columbn] = ' ';
-            area[row + 2][columbn + 1] = '&';
-
-            if (area[row + 1][columbn + 1] == ' ')
+            if (area[row + 2][columbn + 1] == ' ')
             {
-                area[row + 1][columbn] = ' ';
-                area[row + 1][columbn + 1] = '&';
-            }
+                area[row + 2][columbn] = ' ';
+                area[row + 2][columbn + 1] = '&';
 
-            if (area[row][columbn + 1] == ' ')
-            {
-                area[row][columbn] = ' ';
-                area[row][columbn + 1] = '&';
-                columbn++;
+                if (area[row + 1][columbn + 1] == ' ')
+                {
+                    area[row + 1][columbn] = ' ';
+                    area[row + 1][columbn + 1] = '&';
+                }
+
+                if (area[row][columbn + 1] == ' ')
+                {
+                    area[row][columbn] = ' ';
+                    area[row][columbn + 1] = '&';
+                    columbn++;
+                }
             }
         }
+       
     }
 }
 
@@ -214,22 +244,27 @@ void down_func_Battle_size_3_vertical(char** area)
 {
     if (area[row + 3][columbn] == ' ')
     {
-        area[row + 2][columbn] = ' ';
-        area[row + 3][columbn] = '&';
-
-        if (area[row + 2][columbn] == ' ')
+        bool check_Arround_1 = area[row + 4][columbn] != '&' && area[row + 4][columbn + 1] != '&' && area[row + 4][columbn - 1] != '&';
+        if (check_Arround_1)
         {
-            area[row + 1][columbn] = ' ';
-            area[row + 2][columbn] = '&';
+            area[row + 2][columbn] = ' ';
+            area[row + 3][columbn] = '&';
 
-            if (area[row + 1][columbn] == ' ')
+            if (area[row + 2][columbn] == ' ')
             {
-                area[row][columbn] = ' ';
-                area[row + 1][columbn] = '&';
-                row++;
+                area[row + 1][columbn] = ' ';
+                area[row + 2][columbn] = '&';
 
+                if (area[row + 1][columbn] == ' ')
+                {
+                    area[row][columbn] = ' ';
+                    area[row + 1][columbn] = '&';
+                    row++;
+
+                }
             }
         }
+       
     }
 }
 
@@ -238,22 +273,27 @@ void up_func_Battle_size_3_vertical(char** area)
 
     if (area[row - 1][columbn] == ' ')
     {
-        area[row][columbn] = ' ';
-        area[row - 1][columbn] = '&';
-
-        if (area[row][columbn] == ' ')
+        bool check_Arround_1 = area[row - 2][columbn] != '&' && area[row - 2][columbn + 1] != '&' && area[row - 2][columbn - 1] != '&';
+        if (check_Arround_1)
         {
-            area[row + 1][columbn] = ' ';
-            area[row][columbn] = '&';
+            area[row][columbn] = ' ';
+            area[row - 1][columbn] = '&';
 
-            if (area[row + 1][columbn] == ' ')
+            if (area[row][columbn] == ' ')
             {
-                area[row + 2][columbn] = ' ';
-                area[row + 1][columbn] = '&';
-                row--;
+                area[row + 1][columbn] = ' ';
+                area[row][columbn] = '&';
 
+                if (area[row + 1][columbn] == ' ')
+                {
+                    area[row + 2][columbn] = ' ';
+                    area[row + 1][columbn] = '&';
+                    row--;
+
+                }
             }
         }
+       
     }
 }
 
@@ -327,31 +367,37 @@ void left_func_Battle_size_4_vertical(char** area)
 {
     if (area[row][columbn - 1] == ' ' && area[row + 1][columbn - 1] == ' ' && area[row + 2][columbn - 1] == ' ' && area[row + 3][columbn - 1] == ' ')
     {
-        if (area[row][columbn - 1] == ' ')
+        bool check_Arround_1 = area[row][columbn - 2] != '&' && area[row + 1][columbn - 2] != '&' && area[row + 2][columbn - 2] != '&' && area[row + 3][columbn - 2] != '&' && area[row - 1][columbn - 2] != '&' && area[row + 4][columbn - 2] != '&';
+
+        if (check_Arround_1)
         {
-            area[row][columbn] = ' ';
-            area[row][columbn - 1] = '&';
-
-            if (area[row + 1][columbn - 1] == ' ')
+            if (area[row][columbn - 1] == ' ')
             {
-                area[row + 1][columbn] = ' ';
-                area[row + 1][columbn - 1] = '&';
-            }
+                area[row][columbn] = ' ';
+                area[row][columbn - 1] = '&';
 
-            if (area[row + 2][columbn - 1] == ' ')
-            {
-                area[row + 2][columbn] = ' ';
-                area[row + 2][columbn - 1] = '&';
-            }
+                if (area[row + 1][columbn - 1] == ' ')
+                {
+                    area[row + 1][columbn] = ' ';
+                    area[row + 1][columbn - 1] = '&';
+                }
 
-            if (area[row + 3][columbn - 1] == ' ')
-            {
-                area[row + 3][columbn] = ' ';
-                area[row + 3][columbn - 1] = '&';
-                columbn--;
-            }
+                if (area[row + 2][columbn - 1] == ' ')
+                {
+                    area[row + 2][columbn] = ' ';
+                    area[row + 2][columbn - 1] = '&';
+                }
 
+                if (area[row + 3][columbn - 1] == ' ')
+                {
+                    area[row + 3][columbn] = ' ';
+                    area[row + 3][columbn - 1] = '&';
+                    columbn--;
+                }
+
+            }
         }
+       
     }
     
 }
@@ -360,64 +406,71 @@ void right_func_Battle_size_4_vertical(char** area)
 {
     if (area[row][columbn + 1] == ' ' && area[row + 1][columbn + 1] == ' ' && area[row + 2][columbn + 1] == ' ' && area[row + 3][columbn + 1] == ' ')
     {
-        if (area[row][columbn + 1] == ' ')
+        bool check_Arround_1 = area[row][columbn + 2] != '&' && area[row + 1][columbn + 2] != '&' && area[row + 2][columbn + 2] != '&'  && area[row + 3][columbn + 2] != '&' && area[row - 1][columbn + 2] != '&' && area[row + 4][columbn + 2] != '&';
+
+        if (check_Arround_1)
         {
-            area[row][columbn] = ' ';
-            area[row][columbn + 1] = '&';
-
-            if (area[row + 1][columbn + 1] == ' ')
+            if (area[row][columbn + 1] == ' ')
             {
-                area[row + 1][columbn] = ' ';
-                area[row + 1][columbn + 1] = '&';
-            }
+                area[row][columbn] = ' ';
+                area[row][columbn + 1] = '&';
 
-            if (area[row + 2][columbn + 1] == ' ')
-            {
-                area[row + 2][columbn] = ' ';
-                area[row + 2][columbn + 1] = '&';
-            }
+                if (area[row + 1][columbn + 1] == ' ')
+                {
+                    area[row + 1][columbn] = ' ';
+                    area[row + 1][columbn + 1] = '&';
+                }
 
-            if (area[row + 3][columbn + 1] == ' ')
-            {
-                area[row + 3][columbn] = ' ';
-                area[row + 3][columbn + 1] = '&';
-                columbn++;
+                if (area[row + 2][columbn + 1] == ' ')
+                {
+                    area[row + 2][columbn] = ' ';
+                    area[row + 2][columbn + 1] = '&';
+                }
+
+                if (area[row + 3][columbn + 1] == ' ')
+                {
+                    area[row + 3][columbn] = ' ';
+                    area[row + 3][columbn + 1] = '&';
+                    columbn++;
+                }
             }
         }
+       
     }
-   
 }
 
 void down_func_Battle_size_4_vertical(char** area)
 {
     if (area[row + 4][columbn] == ' ')
     {
-        area[row + 3][columbn] = ' ';
-        area[row + 4][columbn] = '&';
-
-        if (area[row + 3][columbn] == ' ')
+        bool check_Arround_1 = area[row + 5][columbn] != '&' && area[row + 5][columbn + 1] != '&' && area[row + 5][columbn - 1] != '&';
+        if (check_Arround_1)
         {
-            area[row + 2][columbn] = ' ';
-            area[row + 3][columbn] = '&';
+            area[row + 3][columbn] = ' ';
+            area[row + 4][columbn] = '&';
 
-            if (area[row + 2][columbn] == ' ')
+            if (area[row + 3][columbn] == ' ')
             {
-                area[row + 1][columbn] = ' ';
-                area[row + 2][columbn] = '&';
+                area[row + 2][columbn] = ' ';
+                area[row + 3][columbn] = '&';
 
-                if (area[row + 1][columbn] == ' ')
+                if (area[row + 2][columbn] == ' ')
                 {
-                    area[row][columbn] = ' ';
-                    area[row + 1][columbn] = '&';
-                    row++;
+                    area[row + 1][columbn] = ' ';
+                    area[row + 2][columbn] = '&';
+
+                    if (area[row + 1][columbn] == ' ')
+                    {
+                        area[row][columbn] = ' ';
+                        area[row + 1][columbn] = '&';
+                        row++;
+
+                    }
 
                 }
 
             }
-
         }
-      
-
     }
 }
 
@@ -425,29 +478,30 @@ void up_func_Battle_size_4_vertical(char** area)
 {
     if (area[row - 1][columbn] == ' ')
     {
-        area[row][columbn] = ' ';
-        area[row - 1][columbn] = '&';
-
-        if (area[row][columbn] == ' ')
+        bool check_Arround_1 = area[row - 2][columbn] != '&' && area[row - 2][columbn + 1] != '&' && area[row - 2][columbn - 1] != '&';
+        if (check_Arround_1)
         {
-            area[row + 1][columbn] = ' ';
-            area[row][columbn] = '&';
+            area[row][columbn] = ' ';
+            area[row - 1][columbn] = '&';
 
-            if (area[row + 1][columbn] == ' ')
+            if (area[row][columbn] == ' ')
             {
-                area[row + 2][columbn] = ' ';
-                area[row + 1][columbn] = '&';
+                area[row + 1][columbn] = ' ';
+                area[row][columbn] = '&';
 
-                if (area[row + 2][columbn] == ' ')
+                if (area[row + 1][columbn] == ' ')
                 {
-                    area[row + 3][columbn] = ' ';
-                    area[row + 2][columbn] = '&';
-                    row--;
+                    area[row + 2][columbn] = ' ';
+                    area[row + 1][columbn] = '&';
 
+                    if (area[row + 2][columbn] == ' ')
+                    {
+                        area[row + 3][columbn] = ' ';
+                        area[row + 2][columbn] = '&';
+                        row--;
+                    }
                 }
-
             }
-
         }
     }
 }

@@ -22,7 +22,7 @@ void ColorText(const char* text)
 
 void Choice_1_With_Menu()
 {
-	const char text[] = "hellooo my game. this game producted by Eminov Nihadddd";
+	const char text[] = "HELLO THIS GAME PRODUCTED BY NIHAD EMINOV. THIS IS BATTLE SHIP GAME. THANK FOR ATTENTIONS";
 	
 	ColorText(text);
 

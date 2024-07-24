@@ -1,4 +1,10 @@
 #pragma once
+
+bool check_ = true;
+int score_Bot = 0;
+int score_Player = 0;
+
+
 void show_Bot_Board(char** board,int size)
 {
 
@@ -39,6 +45,19 @@ void show_Bot_Board(char** board,int size)
     }
     SetConsoleTextAttribute(console, 7);
     
+
+    SetConsoleTextAttribute(console, 2);
+    cout << "BOT SCORE--->";
+    SetConsoleTextAttribute(console, 12);
+    cout << score_Bot << endl;
+    SetConsoleTextAttribute(console, 7);
+
+
+    SetConsoleTextAttribute(console, 2);
+    cout << "PLAYER SCORE--->";
+    SetConsoleTextAttribute(console, 12);
+    cout << score_Player << endl;
+    SetConsoleTextAttribute(console, 7);
 }
 
 
@@ -79,6 +98,7 @@ void left_func_Hit(char** area)
     }
     else if (area[row][columbn - 1] == 'X')
     {
+
         char temp2 = area[row][columbn];
         area[row][columbn] = temp;
         temp = area[row][columbn - 1];
@@ -90,11 +110,13 @@ void left_func_Hit(char** area)
     }
     else if (area[row][columbn - 1] == 'V')
     {
+
         char temp2 = area[row][columbn];
         area[row][columbn] = temp;
         temp = area[row][columbn - 1];
         area[row][columbn - 1] = temp2;
         temp = 'V';
+
         columbn--;
 
     }
@@ -114,22 +136,26 @@ void right_func_Hit(char** area)
 
     else if(area[row][columbn + 1] == 'X')
     {
+
         char temp2 = area[row][columbn];
         area[row][columbn] = temp;
         temp = area[row][columbn + 1];
         area[row][columbn + 1] = temp2;
         temp = 'X';
 
+
         columbn++;
     }
 
     else if (area[row][columbn + 1] == 'V')
     {
+
         char temp2 = area[row][columbn];
         area[row][columbn] = temp;
         temp = area[row][columbn + 1];
         area[row][columbn + 1] = temp2;
         temp = 'V';
+
         columbn++;
     }
 }
@@ -151,21 +177,25 @@ void down_func_Hit(char** area)
     }
     else if (area[row + 1][columbn] == 'X')
     {
+
         char temp2 = area[row][columbn];
         area[row][columbn] = temp;
         temp = area[row + 1][columbn];
         area[row + 1][columbn] = temp2;
         temp = 'X';
 
+
         row++;
     }
     else if (area[row + 1][columbn] == 'V')
     {
+
         char temp2 = area[row][columbn];
         area[row][columbn] = temp;
         temp = area[row + 1][columbn];
         area[row + 1][columbn] = temp2;
         temp = 'V';
+
         row++;
     }
 
@@ -177,54 +207,75 @@ void up_func_Hit(char** area)
 {
     if (area[row - 1][columbn] == ' ' )
     {
-        char temp2 = area[row][columbn];
-        area[row][columbn] = temp;
-        temp = area[row - 1][columbn];
+        char temp2 = area[row][columbn]; //@
+        area[row][columbn] = temp;      //' '
+        temp = area[row - 1][columbn];  //'X'
 
         area[row - 1][columbn] = temp2;
         row--;
     }
     else if (area[row - 1][columbn] == 'X')
     {
+
         char temp2 = area[row][columbn];
         area[row][columbn] = temp;
         temp = area[row - 1][columbn];
         area[row - 1][columbn] = temp2;
         temp = 'X';
 
+
         row--;
     }
     else if (area[row - 1][columbn] == 'V')
     {
+
         char temp2 = area[row][columbn];
         area[row][columbn] = temp;
         temp = area[row - 1][columbn];
         area[row - 1][columbn] = temp2;
         temp = 'V';
+
         row--;
     }
 
 }
 
+int count_bot_Battle = 0;
+
 void check_Hit(char** area,char**fakeArea)
 {
-    if (area[row][columbn] == '&')
+    while (true)
     {
+        if (area[row][columbn] == '&' )
+        {
+           
+            count_bot_Battle++;
+            check_ = true;
+            score_Player++;
+            fakeArea[row][columbn] = 'V';
 
-        fakeArea[row][columbn] = 'V';
+            show_Bot_Board(FakeBoardBot, sizeBoard);
+            break;
+        }
+        if (area[row][columbn] == ' ' )
+        {
+           
+                check_ = false;
+                fakeArea[row][columbn] = 'X';
+            
 
-        show_Bot_Board(FakeBoardBot, sizeBoard);
 
-
+            show_Bot_Board(FakeBoardBot, sizeBoard);
+            break;
+        }
     }
-    if(area[row][columbn] == ' ')
-    {
+   
+    
+  
+    
+   
 
-        fakeArea[row][columbn] = 'X';
-        show_Bot_Board(FakeBoardBot, sizeBoard);
-
-
-    }
+  
 }
 
 
@@ -245,6 +296,7 @@ void Hit_Span_Move()
 
                 show_Bot_Board(FakeBoardBot, sizeBoard);
 
+               
 
                 break;
             case 77:
@@ -273,6 +325,7 @@ void Hit_Span_Move()
             break;
 
         case 13:
+            temp = ' ';
             check_Hit(BoardBot, FakeBoardBot);
             check = false;
             break;

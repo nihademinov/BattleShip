@@ -47,5 +47,8 @@
     <ClInclude Include="Hit_Player.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="Hit_Bot.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
